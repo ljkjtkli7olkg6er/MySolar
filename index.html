@@ -1,917 +1,866 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Solar - One of India's Largest Distributor</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            scroll-behavior: smooth;
-        }
-
-        /* Navigation */
-        nav {
-            background: #5774c3;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-            position: relative;
-        }
-
-        .logo {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background 0.3s;
-            white-space: nowrap;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Mobile menu button */
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-btn span {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        /* Hero Section with Video Background */
-        .hero {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #000011;
-            color: white;
-            overflow: hidden;
-        }
-
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .video-background video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 2;
-        }
-
-        .hero-content {
-            text-align: center;
-            z-index: 10;
-            max-width: 800px;
-            padding: 0 2rem;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: bold;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-            background: linear-gradient(45deg, #ffffff, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: white;
-            color: #ff6b35;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #ff6b35;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
-        }
-
-        #earthCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            display: none;
-        }
-
-        .section {
-            padding: 5rem 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-
-        .section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #1e3a8a;
-        }
-
-        .section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .product {
-            background: #f8fafc;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .product h3 {
-            color: #1e3a8a;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .calculator {
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            padding: 3rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .calculator h3 {
-            text-align: center;
-            color: #1e3a8a;
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #374151;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #3b82f6;
-        }
-
-        .form-group select {
-            background-color: white;
-            cursor: pointer;
-        }
-
-        .form-group small {
-            color: #6b7280;
-            font-size: 0.85rem;
-        }
-
-        .slider-container {
-            position: relative;
-        }
-
-        .slider-container input[type="range"] {
-            width: 100%;
-            height: 8px;
-            border-radius: 5px;
-            background: #d3d3d3;
-            outline: none;
-            -webkit-appearance: none;
-        }
-
-        .slider-container input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #ff6b35;
-            cursor: pointer;
-        }
-
-        .slider-value {
-            position: absolute;
-            top: -30px;
-            right: 0;
-            background: #ff6b35;
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-        }
-
-        .results {
-            margin-top: 2rem;
-            padding: 2rem;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 10px;
-            border: 2px solid #22c55e;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.1);
-        }
-
-        .results h3 {
-            color: #16a34a;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .result-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .result-item {
-            background: #f8fafc;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid #e5e7eb;
-        }
-
-        .result-item strong {
-            display: block;
-            font-size: 1.3rem;
-            color: #16a34a;
-            margin-bottom: 0.5rem;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #ff6b35;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem auto;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 5px;
-            font-size: 1rem;
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        footer {
-            background: #1e3a8a;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        @media screen and (max-width: 768px) {
-            .nav-container {
-                padding: 0 1rem;
-            }
-
-            .logo {
-                font-size: 1.3rem;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: #5774c3;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                gap: 0;
-                padding-top: 2rem;
-                transition: left 0.3s ease;
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-                margin-bottom: 1rem;
-            }
-
-            .nav-links a {
-                display: block;
-                width: 100%;
-                padding: 1rem;
-                font-size: 1.1rem;
-                border-radius: 0;
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .result-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 3rem 0;
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-
-            .calculator {
-                padding: 2rem 1rem;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .nav-container {
-                padding: 0 0.5rem;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-        }
-
-        .mobile-menu-btn.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .mobile-menu-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-btn.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Solar - One of India's Largest Distributor</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    nav {
+      background: #5774c3;
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      position: relative;
+    }
+    .logo {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    .mobile-menu-btn span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+    .hero {
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000011;
+      color: white;
+      overflow: hidden;
+    }
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .video-background video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 2;
+    }
+    .hero-content {
+      text-align: center;
+      z-index: 10;
+      max-width: 800px;
+      padding: 0 2rem;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(45deg, #ffffff, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: white;
+      color: #ff6b35;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    .btn-secondary:hover {
+      background: white;
+      color: #ff6b35;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    }
+    #earthCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: none;
+    }
+    .section {
+      padding: 5rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    .section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #1e3a8a;
+    }
+    .section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .product {
+      background: #f8fafc;
+      padding: 2rem;
+      margin: 2rem 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .product h3 {
+      color: #1e3a8a;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .calculator {
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      padding: 3rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    .calculator h3 {
+      text-align: center;
+      color: #1e3a8a;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #374151;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #3b82f6;
+    }
+    .form-group select {
+      background-color: white;
+      cursor: pointer;
+    }
+    .form-group small {
+      color: #6b7280;
+      font-size: 0.85rem;
+    }
+    .slider-container {
+      position: relative;
+    }
+    .slider-container input[type='range'] {
+      width: 100%;
+      height: 8px;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .slider-container input[type='range']::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ff6b35;
+      cursor: pointer;
+    }
+    .slider-value {
+      position: absolute;
+      top: -30px;
+      right: 0;
+      background: #ff6b35;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    .results {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border-radius: 10px;
+      border: 2px solid #22c55e;
+      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.1);
+    }
+    .results h3 {
+      color: #16a34a;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .result-item {
+      background: #f8fafc;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid #e5e7eb;
+    }
+    .result-item strong {
+      display: block;
+      font-size: 1.3rem;
+      color: #16a34a;
+      margin-bottom: 0.5rem;
+    }
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #ff6b35;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem auto;
+    }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 5px;
+      font-size: 1rem;
+      resize: vertical;
+      min-height: 120px;
+    }
+    footer {
+      background: #1e3a8a;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    @media screen and (max-width: 768px) {
+      .nav-container {
+        padding: 0 1rem;
+      }
+      .logo {
+        font-size: 1.3rem;
+      }
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: #5774c3;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        padding-top: 2rem;
+        transition: left 0.3s ease;
+        z-index: 999;
+      }
+      .nav-links.active {
+        left: 0;
+      }
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.1rem;
+        border-radius: 0;
+      }
+      .mobile-menu-btn {
+        display: flex;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+      .section {
+        padding: 3rem 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .calculator {
+        padding: 2rem 1rem;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      .nav-container {
+        padding: 0 0.5rem;
+      }
+      .logo {
+        font-size: 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .section h2 {
+        font-size: 2rem;
+      }
+    }
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo">My Solar</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#calculator">Calculator</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">My Solar</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#calculator">Calculator</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="video-background">
+      <video id="sunVideo" autoplay muted loop playsinline>
+        <source src="your-sun-video.mp4" type="video/mp4" />
+        <source
+          src="https://cdn.pixabay.com/video/2016/09/13/5194-183786499_tiny.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="video-overlay"></div>
+    <canvas id="earthCanvas"></canvas>
+    <div class="hero-content">
+      <h1>One of India's Largest Distributor</h1>
+      <p>Harnessing the power of the sun to build world-class energy infrastructure</p>
+      <div class="hero-buttons">
+        <a href="#products" class="btn btn-primary">Explore Solar Solutions</a>
+        <a href="#calculator" class="btn btn-secondary">Calculate Your Savings</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <h2>About Us</h2>
+    <p>
+      My Solar is one of India's largest solar distributors and system integrators.
+      We specialize in providing comprehensive solar solutions with cutting-edge
+      technology and exceptional service quality. Our expertise spans across
+      residential, commercial, and industrial solar installations.
+    </p>
+    <p>
+      With a commitment to sustainable energy, we offer end-to-end solar solutions
+      including system design, installation, maintenance, and support. Our team of
+      certified professionals ensures optimal performance and maximum energy savings
+      for our customers across India.
+    </p>
+  </section>
+
+  <section id="products" class="section">
+    <h2>Our Solar Products</h2>
+    <div class="product">
+      <h3>TOPCon Shine Series</h3>
+      <p><strong>Power Range:</strong> 535-580W</p>
+      <p><strong>Efficiency:</strong> 21.5%+</p>
+      <p>
+        Higher efficiency and excellent low-light performance featuring Tunnel Oxide Passivated Contact technology.
+        Perfect for residential, commercial, and utility-scale applications with superior temperature coefficient.
+      </p>
+    </div>
+    <div class="product">
+      <h3>MonoPERC Shine Series</h3>
+      <p><strong>Power Range:</strong> 540-660W</p>
+      <p><strong>Efficiency:</strong> 20.8%+</p>
+      <p>
+        Proven monocrystalline PERC technology offering reliable, cost-effective solutions.
+        Ideal for residential installations, commercial projects, and industrial applications
+        with linear warranty and ALMM approval.
+      </p>
+    </div>
+  </section>
+
+  <section id="calculator" class="section">
+    <h2>Solar Savings Calculator</h2>
+    <div class="calculator">
+      <h3>🇮🇳 Calculate Your Solar Savings in India</h3>
+      <form id="calculatorForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="monthlyUnits">Monthly Electricity Consumption (Units/kWh)</label>
+            <input
+              type="number"
+              id="monthlyUnits"
+              value="300"
+              min="50"
+              required
+            />
+            <small>Enter your monthly electricity consumption in units (kWh)</small>
+          </div>
+          <div class="form-group">
+            <label for="stateSelect">Select Your State</label>
+            <select id="stateSelect" required>
+              <option value="">Choose your state...</option>
+              <option value="andhra_pradesh" data-rate="6.50"
+                >Andhra Pradesh - ₹6.50/unit</option
+              >
+              <option value="arunachal_pradesh" data-rate="4.80"
+                >Arunachal Pradesh - ₹4.80/unit</option
+              >
+              <option value="assam" data-rate="6.20">Assam - ₹6.20/unit</option>
+              <option value="bihar" data-rate="5.90">Bihar - ₹5.90/unit</option>
+              <option value="chhattisgarh" data-rate="5.40"
+                >Chhattisgarh - ₹5.40/unit</option
+              >
+              <option value="goa" data-rate="4.20">Goa - ₹4.20/unit</option>
+              <option value="gujarat" data-rate="5.10">Gujarat - ₹5.10/unit</option>
+              <option value="haryana" data-rate="5.80">Haryana - ₹5.80/unit</option>
+              <option value="himachal_pradesh" data-rate="4.50"
+                >Himachal Pradesh - ₹4.50/unit</option
+              >
+              <option value="jharkhand" data-rate="6.00">Jharkhand - ₹6.00/unit</option>
+              <option value="karnataka" data-rate="7.20">Karnataka - ₹7.20/unit</option>
+              <option value="kerala" data-rate="6.80">Kerala - ₹6.80/unit</option>
+              <option value="madhya_pradesh" data-rate="6.30"
+                >Madhya Pradesh - ₹6.30/unit</option
+              >
+              <option value="maharashtra" data-rate="8.50">Maharashtra - ₹8.50/unit</option>
+              <option value="manipur" data-rate="5.70">Manipur - ₹5.70/unit</option>
+              <option value="meghalaya" data-rate="5.30">Meghalaya - ₹5.30/unit</option>
+              <option value="mizoram" data-rate="6.10">Mizoram - ₹6.10/unit</option>
+              <option value="nagaland" data-rate="5.50">Nagaland - ₹5.50/unit</option>
+              <option value="odisha" data-rate="5.20">Odisha - ₹5.20/unit</option>
+              <option value="punjab" data-rate="6.90">Punjab - ₹6.90/unit</option>
+              <option value="rajasthan" data-rate="7.80">Rajasthan - ₹7.80/unit</option>
+              <option value="sikkim" data-rate="4.00">Sikkim - ₹4.00/unit</option>
+              <option value="tamil_nadu" data-rate="5.60">Tamil Nadu - ₹5.60/unit</option>
+              <option value="telangana" data-rate="6.70">Telangana - ₹6.70/unit</option>
+              <option value="tripura" data-rate="5.80">Tripura - ₹5.80/unit</option>
+              <option value="uttar_pradesh" data-rate="6.40">Uttar Pradesh - ₹6.40/unit</option>
+              <option value="uttarakhand" data-rate="5.90">Uttarakhand - ₹5.90/unit</option>
+              <option value="west_bengal" data-rate="7.10">West Bengal - ₹7.10/unit</option>
+              <option value="delhi" data-rate="8.00">Delhi - ₹8.00/unit</option>
+              <option value="jammu_kashmir" data-rate="5.00"
+                >Jammu & Kashmir - ₹5.00/unit</option
+              >
+              <option value="ladakh" data-rate="4.80">Ladakh - ₹4.80/unit</option>
+            </select>
+            <small>State-wise electricity tariff will be automatically selected</small>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="sunlightHours"
+              >Average Daily Sunlight Hours: <span id="sunlightValue">5.5</span></label
+            >
+            <div class="slider-container">
+              <input
+                type="range"
+                id="sunlightHours"
+                min="3"
+                max="8"
+                step="0.1"
+                value="5.5"
+              />
+              <div class="slider-value" id="sliderValue">5.5 hrs</div>
             </div>
+            <small>Typical range: 3-8 hours (varies by location and season)</small>
+          </div>
+          <div class="form-group">
+            <label for="roofArea">Available Roof Area (sq ft)</label>
+            <input type="number" id="roofArea" value="500" min="100" required />
+            <small>Enter available roof space for solar panel installation</small>
+          </div>
         </div>
-    </nav>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="panelType">Solar Panel Type</label>
+            <select id="panelType">
+              <option value="mono" data-efficiency="20">
+                Monocrystalline (20% efficiency)
+              </option>
+              <option value="poly" data-efficiency="18">
+                Polycrystalline (18% efficiency)
+              </option>
+              <option value="topcon" data-efficiency="22" selected>
+                TOPCon (22% efficiency)
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="systemType">System Type</label>
+            <select id="systemType">
+              <option value="grid_tied" selected>Grid-tied (Net Metering)</option>
+              <option value="hybrid">Hybrid (Grid + Battery)</option>
+              <option value="off_grid">Off-grid (Battery Backup)</option>
+            </select>
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          style="width: 100%; margin-top: 1rem; font-size: 1.1rem"
+        >
+          🔄 Calculate Solar Savings
+        </button>
+      </form>
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Calculating your savings using state-wise data...</p>
+      </div>
+      <div id="results" class="results" style="display: none"></div>
+    </div>
+  </section>
 
-    <section id="home" class="hero">
-        <div class="video-background">
-            <video id="sunVideo" autoplay muted loop playsinline>
-                <source src="your-sun-video.mp4" type="video/mp4">
-                <source src="https://cdn.pixabay.com/video/2016/09/13/5194-183786499_tiny.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <div class="contact-form">
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" required />
         </div>
-        <div class="video-overlay"></div>
-        <canvas id="earthCanvas"></canvas>
-        <div class="hero-content">
-            <h1>One of India's Largest Distributor</h1>
-            <p>Harnessing the power of the sun to build world-class energy infrastructure</p>
-            <div class="hero-buttons">
-                <a href="#products" class="btn btn-primary">Explore Solar Solutions</a>
-                <a href="#calculator" class="btn btn-secondary">Calculate Your Savings</a>
-            </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required />
         </div>
-    </section>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            placeholder="Tell us about your solar requirements..."
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+    <div style="margin-top: 3rem; text-align: center">
+      <h3>Get in Touch</h3>
+      <p>
+        <strong>Address:</strong> My Solar Corporate House, Shantigram, Ahmedabad -
+        382421, Gujarat, India
+      </p>
+      <p><strong>Phone:</strong> +91-79-2656-5555</p>
+      <p><strong>Email:</strong> solar@mysolar.com</p>
+    </div>
+  </section>
 
-    <section id="about" class="section">
-        <h2>About Us</h2>
-        <p>
-            My Solar is one of India's largest solar distributors and system integrators. We specialize in providing
-            comprehensive solar solutions with cutting-edge technology and exceptional service quality. Our expertise
-            spans across residential, commercial, and industrial solar installations.
-        </p>
-        <p>
-            With a commitment to sustainable energy, we offer end-to-end solar solutions including system design,
-            installation, maintenance, and support. Our team of certified professionals ensures optimal performance
-            and maximum energy savings for our customers across India.
-        </p>
-    </section>
+  <footer>
+    <p>
+      &copy; 2025 My Solar. All rights reserved. | Harnessing Solar Energy for a
+      Sustainable Future
+    </p>
+  </footer>
 
-    <section id="products" class="section">
-        <h2>Our Solar Products</h2>
-        <div class="product">
-            <h3>TOPCon Shine Series</h3>
-            <p><strong>Power Range:</strong> 535-580W</p>
-            <p><strong>Efficiency:</strong> 21.5%+</p>
-            <p>
-                Higher efficiency and excellent low-light performance featuring Tunnel Oxide Passivated Contact technology.
-                Perfect for residential, commercial, and utility-scale applications with superior temperature coefficient.
-            </p>
-        </div>
-        <div class="product">
-            <h3>MonoPERC Shine Series</h3>
-            <p><strong>Power Range:</strong> 540-660W</p>
-            <p><strong>Efficiency:</strong> 20.8%+</p>
-            <p>
-                Proven monocrystalline PERC technology offering reliable, cost-effective solutions.
-                Ideal for residential installations, commercial projects, and industrial applications
-                with linear warranty and ALMM approval.
-            </p>
-        </div>
-    </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // Mobile Menu Functionality
+    function toggleMobileMenu() {
+      const navLinks = document.querySelector(".nav-links");
+      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      navLinks.classList.toggle("active");
+      mobileMenuBtn.classList.toggle("active");
+    }
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        document.querySelector(".nav-links").classList.remove("active");
+        document.querySelector(".mobile-menu-btn").classList.remove("active");
+      });
+    });
+    document.addEventListener("click", (e) => {
+      const navLinks = document.querySelector(".nav-links");
+      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      const navContainer = document.querySelector(".nav-container");
+      if (!navContainer.contains(e.target)) {
+        navLinks.classList.remove("active");
+        mobileMenuBtn.classList.remove("active");
+      }
+    });
 
-    <section id="calculator" class="section">
-        <h2>Solar Savings Calculator</h2>
-        <div class="calculator">
-            <h3>🇮🇳 Calculate Your Solar Savings in India</h3>
-            <form id="calculatorForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="monthlyUnits">Monthly Electricity Consumption (Units/kWh)</label>
-                        <input type="number" id="monthlyUnits" value="300" min="50" required />
-                        <small>Enter your monthly electricity consumption in units (kWh)</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="stateSelect">Select Your State</label>
-                        <select id="stateSelect" required>
-                            <option value="">Choose your state...</option>
-                            <option value="andhra_pradesh" data-rate="6.50">Andhra Pradesh - ₹6.50/unit</option>
-                            <option value="arunachal_pradesh" data-rate="4.80">Arunachal Pradesh - ₹4.80/unit</option>
-                            <option value="assam" data-rate="6.20">Assam - ₹6.20/unit</option>
-                            <option value="bihar" data-rate="5.90">Bihar - ₹5.90/unit</option>
-                            <option value="chhattisgarh" data-rate="5.40">Chhattisgarh - ₹5.40/unit</option>
-                            <option value="goa" data-rate="4.20">Goa - ₹4.20/unit</option>
-                            <option value="gujarat" data-rate="5.10">Gujarat - ₹5.10/unit</option>
-                            <option value="haryana" data-rate="5.80">Haryana - ₹5.80/unit</option>
-                            <option value="himachal_pradesh" data-rate="4.50">Himachal Pradesh - ₹4.50/unit</option>
-                            <option value="jharkhand" data-rate="6.00">Jharkhand - ₹6.00/unit</option>
-                            <option value="karnataka" data-rate="7.20">Karnataka - ₹7.20/unit</option>
-                            <option value="kerala" data-rate="6.80">Kerala - ₹6.80/unit</option>
-                            <option value="madhya_pradesh" data-rate="6.30">Madhya Pradesh - ₹6.30/unit</option>
-                            <option value="maharashtra" data-rate="8.50">Maharashtra - ₹8.50/unit</option>
-                            <option value="manipur" data-rate="5.70">Manipur - ₹5.70/unit</option>
-                            <option value="meghalaya" data-rate="5.30">Meghalaya - ₹5.30/unit</option>
-                            <option value="mizoram" data-rate="6.10">Mizoram - ₹6.10/unit</option>
-                            <option value="nagaland" data-rate="5.50">Nagaland - ₹5.50/unit</option>
-                            <option value="odisha" data-rate="5.20">Odisha - ₹5.20/unit</option>
-                            <option value="punjab" data-rate="6.90">Punjab - ₹6.90/unit</option>
-                            <option value="rajasthan" data-rate="7.80">Rajasthan - ₹7.80/unit</option>
-                            <option value="sikkim" data-rate="4.00">Sikkim - ₹4.00/unit</option>
-                            <option value="tamil_nadu" data-rate="5.60">Tamil Nadu - ₹5.60/unit</option>
-                            <option value="telangana" data-rate="6.70">Telangana - ₹6.70/unit</option>
-                            <option value="tripura" data-rate="5.80">Tripura - ₹5.80/unit</option>
-                            <option value="uttar_pradesh" data-rate="6.40">Uttar Pradesh - ₹6.40/unit</option>
-                            <option value="uttarakhand" data-rate="5.90">Uttarakhand - ₹5.90/unit</option>
-                            <option value="west_bengal" data-rate="7.10">West Bengal - ₹7.10/unit</option>
-                            <option value="delhi" data-rate="8.00">Delhi - ₹8.00/unit</option>
-                            <option value="jammu_kashmir" data-rate="5.00">Jammu & Kashmir - ₹5.00/unit</option>
-                            <option value="ladakh" data-rate="4.80">Ladakh - ₹4.80/unit</option>
-                        </select>
-                        <small>State-wise electricity tariff will be automatically selected</small>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="sunlightHours">Average Daily Sunlight Hours: <span id="sunlightValue">5.5</span></label>
-                        <div class="slider-container">
-                            <input
-                                type="range"
-                                id="sunlightHours"
-                                min="3"
-                                max="8"
-                                step="0.1"
-                                value="5.5"
-                            />
-                            <div class="slider-value" id="sliderValue">5.5 hrs</div>
-                        </div>
-                        <small>Typical range: 3-8 hours (varies by location and season)</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="roofArea">Available Roof Area (sq ft)</label>
-                        <input type="number" id="roofArea" value="500" min="100" required />
-                        <small>Enter available roof space for solar panel installation</small>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="panelType">Solar Panel Type</label>
-                        <select id="panelType">
-                            <option value="mono" data-efficiency="20">
-                                Monocrystalline (20% efficiency)
-                            </option>
-                            <option value="poly" data-efficiency="18">
-                                Polycrystalline (18% efficiency)
-                            </option>
-                            <option value="topcon" data-efficiency="22" selected>
-                                TOPCon (22% efficiency)
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="systemType">System Type</label>
-                        <select id="systemType">
-                            <option value="grid_tied" selected>Grid-tied (Net Metering)</option>
-                            <option value="hybrid">Hybrid (Grid + Battery)</option>
-                            <option value="off_grid">Off-grid (Battery Backup)</option>
-                        </select>
-                    </div>
-                </div>
-                <button
-                    type="submit"
-                    class="btn btn-primary"
-                    style="width: 100%; margin-top: 1rem; font-size: 1.1rem"
-                >
-                    🔄 Calculate Solar Savings
-                </button>
-            </form>
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <p>Calculating your savings using state-wise data...</p>
-            </div>
-            <div id="results" class="results" style="display: none"></div>
-        </div>
-    </section>
+    const stateRatesAPI = {
+      andhra_pradesh: { rate: 6.5, solarIrradiance: 5.8 },
+      arunachal_pradesh: { rate: 4.8, solarIrradiance: 4.2 },
+      assam: { rate: 6.2, solarIrradiance: 4.5 },
+      bihar: { rate: 5.9, solarIrradiance: 5.2 },
+      chhattisgarh: { rate: 5.4, solarIrradiance: 5.5 },
+      goa: { rate: 4.2, solarIrradiance: 5.9 },
+      gujarat: { rate: 5.1, solarIrradiance: 6.2 },
+      haryana: { rate: 5.8, solarIrradiance: 5.8 },
+      himachal_pradesh: { rate: 4.5, solarIrradiance: 5.0 },
+      jharkhand: { rate: 6.0, solarIrradiance: 5.1 },
+      karnataka: { rate: 7.2, solarIrradiance: 5.7 },
+      kerala: { rate: 6.8, solarIrradiance: 5.4 },
+      madhya_pradesh: { rate: 6.3, solarIrradiance: 5.9 },
+      maharashtra: { rate: 8.5, solarIrradiance: 5.8 },
+      manipur: { rate: 5.7, solarIrradiance: 4.8 },
+      meghalaya: { rate: 5.3, solarIrradiance: 4.3 },
+      mizoram: { rate: 6.1, solarIrradiance: 4.6 },
+      nagaland: { rate: 5.5, solarIrradiance: 4.4 },
+      odisha: { rate: 5.2, solarIrradiance: 5.3 },
+      punjab: { rate: 6.9, solarIrradiance: 5.6 },
+      rajasthan: { rate: 7.8, solarIrradiance: 6.5 },
+      sikkim: { rate: 4.0, solarIrradiance: 4.8 },
+      tamil_nadu: { rate: 5.6, solarIrradiance: 6.0 },
+      telangana: { rate: 6.7, solarIrradiance: 5.9 },
+      tripura: { rate: 5.8, solarIrradiance: 4.7 },
+      uttar_pradesh: { rate: 6.4, solarIrradiance: 5.4 },
+      uttarakhand: { rate: 5.9, solarIrradiance: 5.3 },
+      west_bengal: { rate: 7.1, solarIrradiance: 4.9 },
+      delhi: { rate: 8.0, solarIrradiance: 5.5 },
+      jammu_kashmir: { rate: 5.0, solarIrradiance: 5.2 },
+      ladakh: { rate: 4.8, solarIrradiance: 6.0 },
+    };
 
-    <section id="contact" class="section">
-        <h2>Contact Us</h2>
-        <div class="contact-form">
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" required />
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required />
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" />
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea
-                        id="message"
-                        placeholder="Tell us about your solar requirements..."
-                    ></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-            </form>
-        </div>
-        <div style="margin-top: 3rem; text-align: center">
-            <h3>Get in Touch</h3>
-            <p>
-                <strong>Address:</strong> My Solar Corporate House, Shantigram,
-                Ahmedabad - 382421, Gujarat, India
-            </p>
-            <p><strong>Phone:</strong> +91-79-2656-5555</p>
-            <p><strong>Email:</strong> solar@mysolar.com</p>
-        </div>
-    </section>
-    <footer>
-        <p>
-            &copy; 2025 My Solar. All rights reserved. | Harnessing Solar Energy for a
-            Sustainable Future
-        </p>
-    </footer>
+    function getStateElectricityRate(state) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(stateRatesAPI[state] || { rate: 6.0, solarIrradiance: 5.5 });
+        }, 250);
+      });
+    }
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // Mobile Menu Functionality
-        function toggleMobileMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
+    document
+      .getElementById("calculatorForm")
+      .addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const monthlyUnits = parseFloat(
+          document.getElementById("monthlyUnits").value
+        );
+        const stateSelect = document.getElementById("stateSelect");
+        const state = stateSelect.value;
+
+        if (!state) {
+          alert("Please select your state");
+          return;
         }
-        document.querySelectorAll('.nav-links a').forEach((link) => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('active');
-                document.querySelector('.mobile-menu-btn').classList.remove('active');
-            });
-        });
-        document.addEventListener('click', (e) => {
-            const navLinks = document.querySelector('.nav-links');
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navContainer = document.querySelector('.nav-container');
-            if (!navContainer.contains(e.target)) {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-            }
-        });
 
-        const stateRatesAPI = {
-            andhra_pradesh: { rate: 6.5, solarIrradiance: 5.8 },
-            arunachal_pradesh: { rate: 4.8, solarIrradiance: 4.2 },
-            assam: { rate: 6.2, solarIrradiance: 4.5 },
-            bihar: { rate: 5.9, solarIrradiance: 5.2 },
-            chhattisgarh: { rate: 5.4, solarIrradiance: 5.5 },
-            goa: { rate: 4.2, solarIrradiance: 5.9 },
-            gujarat: { rate: 5.1, solarIrradiance: 6.2 },
-            haryana: { rate: 5.8, solarIrradiance: 5.8 },
-            himachal_pradesh: { rate: 4.5, solarIrradiance: 5.0 },
-            jharkhand: { rate: 6.0, solarIrradiance: 5.1 },
-            karnataka: { rate: 7.2, solarIrradiance: 5.7 },
-            kerala: { rate: 6.8, solarIrradiance: 5.4 },
-            madhya_pradesh: { rate: 6.3, solarIrradiance: 5.9 },
-            maharashtra: { rate: 8.5, solarIrradiance: 5.8 },
-            manipur: { rate: 5.7, solarIrradiance: 4.8 },
-            meghalaya: { rate: 5.3, solarIrradiance: 4.3 },
-            mizoram: { rate: 6.1, solarIrradiance: 4.6 },
-            nagaland: { rate: 5.5, solarIrradiance: 4.4 },
-            odisha: { rate: 5.2, solarIrradiance: 5.3 },
-            punjab: { rate: 6.9, solarIrradiance: 5.6 },
-            rajasthan: { rate: 7.8, solarIrradiance: 6.5 },
-            sikkim: { rate: 4.0, solarIrradiance: 4.8 },
-            tamil_nadu: { rate: 5.6, solarIrradiance: 6.0 },
-            telangana: { rate: 6.7, solarIrradiance: 5.9 },
-            tripura: { rate: 5.8, solarIrradiance: 4.7 },
-            uttar_pradesh: { rate: 6.4, solarIrradiance: 5.4 },
-            uttarakhand: { rate: 5.9, solarIrradiance: 5.3 },
-            west_bengal: { rate: 7.1, solarIrradiance: 4.9 },
-            delhi: { rate: 8.0, solarIrradiance: 5.5 },
-            jammu_kashmir: { rate: 5.0, solarIrradiance: 5.2 },
-            ladakh: { rate: 4.8, solarIrradiance: 6.0 },
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("results").style.display = "none";
+
+        const stateData = await getStateElectricityRate(state);
+
+        const sunlightHours = parseFloat(
+          document.getElementById("sunlightHours").value
+        );
+        const roofArea = parseFloat(document.getElementById("roofArea").value);
+        const panelType = document.getElementById("panelType");
+        const panelEfficiency =
+          parseFloat(
+            panelType.options[panelType.selectedIndex].getAttribute(
+              "data-efficiency"
+            )
+          ) / 100;
+        const systemType = document.getElementById("systemType").value;
+
+        const panelPowerPerSqFt = 15;
+        const systemEfficiency = 0.85;
+        const costPerKW = {
+          grid_tied: 45000,
+          hybrid: 75000,
+          off_grid: 90000,
         };
 
-        function getStateElectricityRate(state) {
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    resolve(stateRatesAPI[state] || { rate: 6.0, solarIrradiance: 5.5 });
-                }, 250);
-            });
-        }
+        const dailyConsumption = monthlyUnits / 30;
+        const requiredSystemKW =
+          dailyConsumption / (stateData.solarIrradiance * systemEfficiency);
+        const maxPossibleSystemKW =
+          (roofArea * panelPowerPerSqFt * panelEfficiency) / 1000;
+        const actualSystemKW = Math.max(
+          0.1,
+          Math.min(requiredSystemKW, maxPossibleSystemKW)
+        );
 
-        document
-            .getElementById("calculatorForm")
-            .addEventListener("submit", async function (e) {
-                e.preventDefault();
-                const monthlyUnits = parseFloat(
-                    document.getElementById("monthlyUnits").value
-                );
-                const stateSelect = document.getElementById("stateSelect");
-                const state = stateSelect.value;
+        const dailyGeneration =
+          actualSystemKW * stateData.solarIrradiance * systemEfficiency;
+        const monthlyGeneration = dailyGeneration * 30;
+        const annualGeneration = dailyGeneration * 365;
 
-                if (!state) {
-                    alert("Please select your state");
-                    return;
-                }
+        const savingsUnits = Math.min(monthlyUnits, monthlyGeneration);
+        const monthlySavings = savingsUnits * stateData.rate;
+        const annualSavings = monthlySavings * 12;
+        const systemCost = actualSystemKW * costPerKW[systemType];
+        const paybackPeriod = systemCost / annualSavings;
+        const lifetimeSavings = annualSavings * 25 - systemCost;
 
-                document.getElementById("loading").style.display = "block";
-                document.getElementById("results").style.display = "none";
+        const co2ReductionKg = annualGeneration * 0.82;
+        const treesEquivalent = co2ReductionKg / 22;
 
-                const stateData = await getStateElectricityRate(state);
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("results").style.display = "";
 
-                const sunlightHours = parseFloat(
-                    document.getElementById("sunlightHours").value
-                );
-                const roofArea = parseFloat(
-                    document.getElementById("roofArea").value
-                );
-                const panelType = document.getElementById("panelType");
-                const panelEfficiency =
-                    parseFloat(
-                        panelType.options[panelType.selectedIndex].getAttribute(
-                            "data-efficiency"
-                        )
-                    ) / 100;
-                const systemType = document.getElementById("systemType").value;
-
-                const panelPowerPerSqFt = 15;
-                const systemEfficiency = 0.85;
-                const costPerKW = {
-                    grid_tied: 45000,
-                    hybrid: 75000,
-                    off_grid: 90000,
-                };
-
-                const dailyConsumption = monthlyUnits / 30;
-                const requiredSystemKW =
-                    dailyConsumption / (stateData.solarIrradiance * systemEfficiency);
-                const maxPossibleSystemKW =
-                    (roofArea * panelPowerPerSqFt * panelEfficiency) / 1000;
-                const actualSystemKW = Math.max(
-                    0.1,
-                    Math.min(requiredSystemKW, maxPossibleSystemKW)
-                );
-
-                const dailyGeneration =
-                    actualSystemKW * stateData.solarIrradiance * systemEfficiency;
-                const monthlyGeneration = dailyGeneration * 30;
-                const annualGeneration = dailyGeneration * 365;
-
-                const savingsUnits = Math.min(monthlyUnits, monthlyGeneration);
-                const monthlySavings = savingsUnits * stateData.rate;
-                const annualSavings = monthlySavings * 12;
-                const systemCost = actualSystemKW * costPerKW[systemType];
-                const paybackPeriod = systemCost / annualSavings;
-                const lifetimeSavings = annualSavings * 25 - systemCost;
-
-                const co2ReductionKg = annualGeneration * 0.82;
-                const treesEquivalent = co2ReductionKg / 22;
-
-                document.getElementById("loading").style.display = "none";
-                document.getElementById("results").style.display = "";
-
-                document.getElementById("results").innerHTML = `
+        document.getElementById("results").innerHTML = `
             <h3>🌟 Your Solar Savings Analysis</h3>
             <div class="result-grid">
                 <div class="result-item">
                     <strong>₹${monthlySavings.toLocaleString("en-IN", {
-                        maximumFractionDigits: 0,
+                      maximumFractionDigits: 0,
                     })}</strong>
                     Monthly Savings
                 </div>
                 <div class="result-item">
                     <strong>₹${annualSavings.toLocaleString("en-IN", {
-                        maximumFractionDigits: 0,
+                      maximumFractionDigits: 0,
                     })}</strong>
                     Annual Savings
                 </div>
@@ -925,7 +874,7 @@
                 </div>
                 <div class="result-item">
                     <strong>₹${systemCost.toLocaleString("en-IN", {
-                        maximumFractionDigits: 0,
+                      maximumFractionDigits: 0,
                     })}</strong>
                     Total Investment
                 </div>
@@ -935,7 +884,7 @@
                 </div>
                 <div class="result-item">
                     <strong>₹${lifetimeSavings.toLocaleString("en-IN", {
-                        maximumFractionDigits: 0,
+                      maximumFractionDigits: 0,
                     })}</strong>
                     25-Year Net Saving
                 </div>
@@ -946,25 +895,23 @@
             </div>
             <div style="margin-top:1rem; padding:1rem; background:#ecfdf5; border-radius:8px;">
                 <h4>🌍 Environmental Impact</h4>
-                <p><strong>${co2ReductionKg.toFixed(0)} kg CO₂</strong> saved yearly (~<strong>${treesEquivalent.toFixed(0)}</strong> trees)</p>
+                <p><strong>${co2ReductionKg.toFixed(
+                  0
+                )} kg CO₂</strong> saved yearly (~<strong>${treesEquivalent.toFixed(
+          0
+        )}</strong> trees)</p>
             </div>
             <div style="margin-top:1rem; padding:1rem; background:#eff6ff; border-radius:8px;">
-                <p><strong>Location:</strong> ${stateSelect.selectedOptions[0].text}</p>
+                <p><strong>Location:</strong> ${
+                  stateSelect.selectedOptions[0].text
+                }</p>
                 <p><em>Actual savings may vary. Calculations use state rates, typical solar irradiance and standard install parameters.</em></p>
             </div>
         `;
-            });
-
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const navLinks = document.querySelector(".nav-links");
-            const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-
-            navLinks.classList.toggle("active");
-            mobileMenuBtn.classList.toggle("active");
-        }
-    </script>
+      });
+  </script>
 </body>
 </html>
 
      
+
