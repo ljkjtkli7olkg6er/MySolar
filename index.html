@@ -157,16 +157,23 @@
       border: 2px solid white;
       color: white;
     }
-  .contact-submit {
-    background-color: #ff6b35;
-    color: white;
-    border: none;
+  .contact-form button.btn-primary {
+    background-color: #ff6b35 !important;  /* Solid orange background always */
+    color: white !important;                /* White text always */
+    border: none !important;                /* Remove border */
+    cursor: pointer;
     transition: background-color 0.3s ease;
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 5px;
 }
 
-.contact-submit:hover {
-    background-color: #e55a2b;
+.contact-form button.btn-primary:hover {
+    background-color: #e55a2b !important;  /* Darker orange on hover */
 }
+
 
    
     .btn-primary:hover {
@@ -705,7 +712,8 @@
             placeholder="Tell us about your solar requirements..."
           ></textarea>
         </div>
-        <button type="submit" class="contact-submit">Send Message</button>
+       <button type="submit" class="btn btn-primary contact-btn">Send Message</button>
+
       </form>
     </div>
     <div style="margin-top: 3rem; text-align: center">
@@ -927,6 +935,7 @@
 </html>
 
      
+
 
 
 
