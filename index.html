@@ -1,2 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SunPower-style Landing</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="#hero1">SUN SOLAR</a>
+
+    <nav class="navlinks" id="navlinks">
+      <a href="#hero1" class="link">Home</a>
+      <a href="#vision" class="link">Products</a>
+      <a href="#cards" class="link">Features</a>
+      <a href="#about" class="link">Testimony</a>
+      <a href="#footer" class="link">Support</a>
+    </nav>
+
+    <div class="navright">
+      <button class="iconbtn" aria-label="Search">⌕</button>
+      <a class="btn btn--primary" href="#quote">Get Started</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero 1 (Video BG) -->
+  <section class="hero hero--one" id="hero1">
+    <video class="hero__bgVideo" autoplay muted loop playsinline preload="metadata">
+  <source src="12858696-uhd_3840_2160_60fps.mp4" type="video/mp4" />
+  </video>
+  
+
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <h1>Powering a Brighter Future</h1>
+        <p>
+          We’re creating an all-in-one home and commercial energy solution that transforms how we live,
+          connect, and interact with the world around us.
+        </p>
+        <a class="btn btn--primary btn--lg" href="#quote">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CEO Announcement / About -->
+  <section class="band" id="about">
+    <div class="container band__inner">
+      <div>
+        <h2>An Announcement from our CEO, T.J. Rodgers</h2>
+        <p>Discover our vision for powering the future of energy through cutting-edge solar solutions.</p>
+      </div>
+      <a class="btn btn--ghost" href="#">Read Article</a>
+    </div>
+  </section>
+
+  <!-- Our Vision -->
+  <section class="vision" id="vision">
+    <div class="container">
+      <h2>Our Vision</h2>
+      <p class="lead">
+        Imagine a home or business where solar panels capture energy, intelligent batteries store and manage electricity,
+        and your entire property becomes a smart, responsive energy environment. We're making that vision a reality.
+      </p>
+
+      <div class="features">
+        <div class="feature"><h3>Unmatched Experience</h3><p>The SunPower name represents decades of solar innovation.</p></div>
+        <div class="feature"><h3>Premium Quality</h3><p>High-efficiency solar panels tested for durability.</p></div>
+        <div class="feature"><h3>Custom Solutions</h3><p>Solar + storage systems tailored to your needs.</p></div>
+        <div class="feature"><h3>Seamless Process</h3><p>Expert support from consultation to installation.</p></div>
+        <div class="feature"><h3>25-Year Manufacturer Warranty</h3><p>Industry-leading warranties for peace of mind.</p></div>
+        <div class="feature"><h3>Smart Energy Ecosystem</h3><p>Enabling an intelligent energy future for your home.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Cards -->
+  <section class="cards" id="cards">
+    <div class="container cardgrid">
+      <article class="card card--a">
+        <h3>Residential Solar Systems</h3>
+        <p>Increase your energy independence and lower your electricity bill.</p>
+        <a class="card__link" href="#">Explore</a>
+      </article>
+
+      <article class="card card--b">
+        <h3>Solar Battery Storage</h3>
+        <p>Maximize solar savings and keep lights on during an outage.</p>
+        <a class="card__link" href="#">Explore Solar Batteries</a>
+      </article>
+
+      <article class="card card--c">
+        <h3>New Homes</h3>
+        <p>Builders trust SunPower to make solar simple and deliver quality for years.</p>
+        <a class="card__link" href="#">Explore</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Hero 2 + Quote -->
+  <section class="hero hero--two" id="quote">
+    <div class="container hero2__grid">
+      <div class="hero2__copy">
+        <h2>Empowering Energy Independence</h2>
+        <p>Take control of your power with premium solar + storage solutions.</p>
+      </div>
+
+      <form class="quote" id="quoteForm">
+        <div class="row2">
+          <label class="field"><span>First Name</span><input name="firstName" required></label>
+          <label class="field"><span>Last Name</span><input name="lastName" required></label>
+        </div>
+
+        <label class="field"><span>Address</span><input name="address" required></label>
+
+        <div class="row2">
+          <label class="field"><span>Email</span><input name="email" type="email" required></label>
+          <label class="field"><span>Mobile Phone</span><input name="phone" type="tel" required></label>
+        </div>
+
+        <p class="fineprint">
+          By clicking “Get a Quote,” you authorize contact via phone/text. Msg & data rates may apply.
+        </p>
+
+        <button class="btn btn--primary btn--lg" type="submit">Get Free Quote</button>
+        <p class="success" id="successMsg" hidden>Saved locally (demo).</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" id="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <div class="footer__logo">SUN SOLAR</div>
+      <p class="footer__desc">
+        Premium solar + storage solutions designed to help you take control of your energy.
+      </p>
+    </div>
+
+    <div class="footer__col">
+      <h4>Residential Solar</h4>
+      <a href="#">Homeowners</a>
+      <a href="#">How Solar Works</a>
+      <a href="#">Installation Process</a>
+      <a href="#">Payment Options</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Energy Solutions</h4>
+      <a href="#">Better Solar Panels</a>
+      <a href="#">Solar Battery Storage</a>
+      <a href="#">Monitoring</a>
+      <a href="#">Service</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Leadership</a>
+      <a href="#">Careers</a>
+      <a href="#">Investors</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Support</h4>
+      <a href="#">Solar Resources</a>
+      <a href="#">Contact Us</a>
+      <a href="#quote">Get Started</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottomInner">
+      <span>© <span id="year"></span> Solar Landing. All rights reserved.</span>
+      <div class="footer__legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie" id="cookieBar">
+  <div class="container cookie__inner">
+    <p>
+      This website uses cookies to enhance user experience and analyze performance and traffic.
+      <a href="#">Read our cookie policy</a>.
+    </p>
+    <div class="cookie__actions">
+      <button class="btn btn--ghost" id="cookiePrefs">Change Preferences</button>
+      <button class="btn btn--primary" id="cookieAccept">Accept Cookies</button>
+      <button class="cookie__close" id="cookieClose" aria-label="Close">×</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
+
 
 
