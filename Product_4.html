@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Residential Solar Systems</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .productPage{ padding: 40px 0 70px; background:#fff; }
+    .productBox{ border:1px solid rgba(0,0,0,.08); border-radius:18px; padding:22px; box-shadow:0 10px 24px rgba(0,0,0,.08); }
+    .productTitle{ margin:0 0 10px; font-size:clamp(26px,3vw,42px); }
+    .productDesc{ margin:0 0 16px; color:var(--muted); line-height:1.6; }
+    .productList{ margin:0; padding-left:18px; }
+    .productList li{ margin:8px 0; }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="index.html#hero1">MODERN AGENCY</a>
+    <div class="navright">
+      <a class="btn btn--ghost" href="index.html#cards">← Back</a>
+      <a class="btn btn--primary" href="index.html#quote">Get Started</a>
+    </div>
+  </div>
+</header>
+
+<main class="productPage">
+  <div class="container">
+    <div class="productBox">
+      <h1 class="productTitle">Residential Solar Systems</h1>
+      <p class="productDesc">
+        High-performance rooftop solar designed to cut bills and increase energy independence.
+      </p>
+      <ul class="productList">
+        <li>Site assessment and system sizing</li>
+        <li>High-efficiency panel options</li>
+        <li>Monitoring + maintenance guidance</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="footer" id="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <div class="footer__logo">SUN SOLAR</div>
+      <p class="footer__desc">
+        Premium solar + storage solutions designed to help you take control of your energy.
+      </p>
+    </div>
+
+    <div class="footer__col">
+      <h4>Residential Solar</h4>
+      <a href="#">Homeowners</a>
+      <a href="#">How Solar Works</a>
+      <a href="#">Installation Process</a>
+      <a href="#">Payment Options</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Energy Solutions</h4>
+      <a href="#">Better Solar Panels</a>
+      <a href="#">Solar Battery Storage</a>
+      <a href="#">Monitoring</a>
+      <a href="#">Service</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Leadership</a>
+      <a href="#">Careers</a>
+      <a href="#">Investors</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Support</h4>
+      <a href="#">Solar Resources</a>
+      <a href="#">Contact Us</a>
+      <a href="#quote">Get Started</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottomInner">
+      <span>© <span id="year"></span> Solar Landing. All rights reserved.</span>
+      <div class="footer__legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie" id="cookieBar">
+  <div class="container cookie__inner">
+    <p>
+      This website uses cookies to enhance user experience and analyze performance and traffic.
+      <a href="#">Read our cookie policy</a>.
+    </p>
+    <div class="cookie__actions">
+      
+      <button class="btn btn--primary" id="cookieAccept" >Accept Cookies</button>
+      <button class="cookie__close" id="cookieClose" aria-label="Close">×</button>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+  // year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // cookie bar close handlers
+  const cookieBar = document.getElementById("cookieBar");
+  const cookieAccept = document.getElementById("cookieAccept");
+  const cookieClose = document.getElementById("cookieClose");
+  const cookiePrefs = document.getElementById("cookiePrefs");
+
+  function closeCookieBar() {
+    if (cookieBar) cookieBar.remove();   // or: cookieBar.style.display = "none";
+  }
+
+  cookieAccept?.addEventListener("click", closeCookieBar);
+  cookieClose?.addEventListener("click", closeCookieBar);
+  cookiePrefs?.addEventListener("click", closeCookieBar);
+
+
+</script>
+</body>
+</html>

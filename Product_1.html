@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Residential Solar Systems</title>
+
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+
+  /* ---------- PRODUCT LAYOUT ---------- */
+ 
+  .productContent{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+    margin-top:20px;
+  }
+
+  .productImage img{
+    width:350px;
+    max-width:100%;
+    border-radius:12px;
+  }
+
+  .productFeatures{
+    flex:1;
+    text-align:left;
+  }
+
+  /* ---------- FEATURES ---------- */
+
+  .productList li{
+    margin:14px 0;
+    font-size:3.5vh;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-weight:700;
+   
+  }
+
+  .productList i{
+    font-size:22px;
+    color:#fff;
+    background:#aaf648;
+    padding:10px;
+    border-radius:50%;
+    min-width:42px;
+    text-align:center;
+    transition:.3s;
+  }
+
+  .productList li:hover i{
+    transform:scale(1.1);
+    background:#89e500;
+  }
+
+  /* ---------- MAIN BUTTON ---------- */
+
+  .productBtn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 26px;
+    background:#ff7a00;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s ease;
+  }
+
+  .productBtn:hover{
+    background:#e56700;
+    transform:translateY(-2px);
+  }
+
+  /* ---------- PRICE OVERVIEW BUTTON ---------- */
+
+  #openPriceDialog{
+    background:#0091ff;
+    color:#fff;
+    padding:14px 32px;
+    font-size:16px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    box-shadow:0 6px 16px rgba(0,0,0,0.15);
+    transition:all .3s ease;
+  }
+
+  #openPriceDialog:hover{
+    background:#0054e5;
+    transform:translateY(-3px);
+    box-shadow:0 10px 24px rgba(0,0,0,0.2);
+  }
+
+  /* ---------- DIALOG MODAL ---------- */
+
+  #priceDialog{
+    border:0;
+    border-radius:16px;
+    padding:0;
+  }
+
+  #priceDialog::backdrop{
+    background:rgba(0,0,0,.55);
+  }
+
+  /* ---------- MOBILE ---------- */
+
+  @media (max-width: 768px) {
+    .productContent {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .productList {
+      text-align: left;
+    }
+
+    .productBtn{
+      width:100%;
+    }
+
+    #openPriceDialog{
+      width:100%;
+    }
+  }
+  /* ================= FOOTER ================= */
+
+.footer{
+  background:#0f172a;              /* dark navy */
+  color:#e5e7eb;
+  margin-top:60px;
+  font-size:14px;
+}
+
+/* grid layout */
+.footer__grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap:40px;
+  padding:50px 0;
+}
+
+/* brand */
+.footer__logo{
+  font-size:20px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:10px;
+}
+
+.footer__desc{
+  color:#9ca3af;
+  line-height:1.6;
+}
+
+/* column headings */
+.footer__col h4{
+  color:#fff;
+  margin-bottom:12px;
+  font-size:16px;
+}
+
+/* footer links */
+.footer__col a{
+  display:block;
+  color:#9ca3af;
+  text-decoration:none;
+  margin:6px 0;
+  transition:0.3s;
+}
+
+.footer__col a:hover{
+  color:#ff7a00;   /* solar orange */
+  padding-left:4px;
+}
+
+/* bottom bar */
+.footer__bottom{
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding:14px 0;
+}
+
+.footer__bottomInner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.footer__legal a{
+  color:#9ca3af;
+  margin-left:16px;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.footer__legal a:hover{
+  color:#ff7a00;
+}
+
+/* responsive */
+@media (max-width:768px){
+  .footer__bottomInner{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+/* ===== MODAL BASE ===== */
+#priceDialog{
+  border:none;
+  border-radius:18px;
+  padding:0;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+  animation:dialogFade .35s ease;
+}
+
+/* backdrop overlay */
+#priceDialog::backdrop{
+  background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(4px);
+}
+
+/* dialog animation */
+@keyframes dialogFade{
+  from{
+    opacity:0;
+    transform:translateY(30px) scale(.96);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* ===== HEADER ===== */
+#priceDialog h3{
+  font-size:20px;
+  font-weight:600;
+}
+
+/* close button */
+#priceDialog form button[type="submit"]{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  border:1px solid rgba(0,0,0,0.12);
+  background:#fff;
+  cursor:pointer;
+  font-size:18px;
+  transition:.25s;
+}
+
+#priceDialog form button[type="submit"]:hover{
+  background:#ff7a00;
+  color:#fff;
+}
+
+/* ===== FORM FIELDS ===== */
+#priceDialog input,
+#priceDialog select{
+  width:100%;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,0.15);
+  margin-bottom:14px;
+  font-size:15px;
+  transition:.25s;
+}
+
+#priceDialog input:focus,
+#priceDialog select:focus{
+  outline:none;
+  border-color:#ff7a00;
+  box-shadow:0 0 0 2px rgba(255,122,0,0.2);
+}
+
+/* ===== RESULT BOX ===== */
+#priceResult{
+  min-height:50px;
+  background:#f3f4f6;
+  border-radius:12px;
+  padding:14px;
+  margin:10px 0 14px;
+  font-weight:600;
+  color:#111827;
+}
+
+/* ===== BUTTONS ===== */
+#calcPriceBtn{
+  background:#ff7a00;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  padding:10px 18px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.3s;
+}
+
+#calcPriceBtn:hover{
+  background:#e56700;
+  transform:translateY(-1px);
+}
+
+/* cancel button (ghost) */
+#priceDialog .btn--ghost{
+  background:#fff;
+  border:1px solid rgba(0,0,0,0.12);
+  color:#333;
+}
+
+#priceDialog .btn--ghost:hover{
+  background:#f3f4f6;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width:600px){
+  #priceDialog form{
+    width:92vw;
+    padding:16px;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="#">MODERN AGENCY</a>
+    <div class="navright">
+      <a class="btn btn--ghost" href="index.html#cards">← Back</a>
+      <a class="btn btn--primary" href="index.html#quote">Get Started</a>
+    </div>
+  </div>
+</header>
+
+<main class="productPage">
+  <div class="container" >
+
+    <div class="productBox">
+      <h1 class="productTitle">Residential Solar Systems</h1>
+      <p class="productDesc">
+        High-performance rooftop solar designed to cut bills and increase energy independence.
+      </p>
+      <div class="productContent">
+        <div class="productImage">
+          <img src="PrideShine.png" alt="Solar System" height="400vh" width="200vh">
+        </div>
+        <div class="productFeatures">
+          <ul class="productList">
+            <li><i class="fa-solid fa-solar-panel"></i> Site assessment and system sizing</li>
+            <li><i class="fa-solid fa-bolt"></i> High-efficiency panel options</li>
+            <li><i class="fa-solid fa-chart-line"></i> Monitoring + maintenance guidance</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- PRICE BUTTON -->
+    <div style="margin-top:25px;">
+      <button id="openPriceDialog">Price Overview</button>
+    </div>
+
+  </div>
+
+  <!-- MODAL -->
+  <dialog id="priceDialog">
+    <form method="dialog" style="padding:18px; width:min(560px,92vw);">
+
+      <div style="display:flex;justify-content:space-between;">
+        <h3>Price Overview</h3>
+        <button type="submit">×</button>
+      </div>
+
+      <p>Select system size to see estimated cost</p>
+
+      <input id="kw" type="number" value="3">
+
+      <select id="battery">
+        <option value="none">None</option>
+        <option value="basic">Basic(70% Efficiency)</option>
+        <option value="premium">Premium(85% Efficiency)</option>
+      </select>
+
+      <div id="priceResult"></div>
+
+      <button id="calcPriceBtn" type="button">Calculate</button>
+
+    </form>
+  </dialog>
+  <footer class="footer" id="footer">
+
+  <div class="container footer__grid">
+
+    <!-- BRAND -->
+    <div class="footer__brand">
+      <div class="footer__logo">SUN SOLAR</div>
+      <p class="footer__desc">
+        Premium solar + storage solutions designed to help you take control of your energy and reduce electricity bills.
+      </p>
+    </div>
+
+    <!-- COLUMN 1 -->
+    <div class="footer__col">
+      <h4>Residential Solar</h4>
+      <a href="#">Homeowners</a>
+      <a href="#">How Solar Works</a>
+      <a href="#">Installation Process</a>
+      <a href="#">Payment Options</a>
+    </div>
+
+    <!-- COLUMN 2 -->
+    <div class="footer__col">
+      <h4>Energy Solutions</h4>
+      <a href="#">Better Solar Panels</a>
+      <a href="#">Solar Battery Storage</a>
+      <a href="#">Monitoring</a>
+      <a href="#">Maintenance</a>
+    </div>
+
+    <!-- COLUMN 3 -->
+    <div class="footer__col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Leadership</a>
+      <a href="#">Careers</a>
+      <a href="#">Investors</a>
+    </div>
+
+    <!-- COLUMN 4 -->
+    <div class="footer__col">
+      <h4>Support</h4>
+      <a href="#">Solar Resources</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Get a Quote</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="footer__bottom">
+    <div class="container footer__bottomInner">
+
+      <span>© <span id="year"></span> SUN SOLAR. All rights reserved.</span>
+
+      <div class="footer__legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+</main>
+<script>
+const openPriceDialog = document.getElementById("openPriceDialog");
+const priceDialog = document.getElementById("priceDialog");
+const calcPriceBtn = document.getElementById("calcPriceBtn");
+const priceResult = document.getElementById("priceResult");
+
+openPriceDialog.onclick = () => priceDialog.showModal();
+
+calcPriceBtn.onclick = () => {
+  const kw = document.getElementById("kw").value;
+  priceResult.textContent = "Estimated cost ₹" + (kw * 65000);
+};
+</script>
+
+</body>
+</html>
