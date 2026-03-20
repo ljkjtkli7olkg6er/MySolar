@@ -41,20 +41,22 @@ a{ text-decoration:none; color:inherit; }
   align-items:center;
   gap:50px;
 }
-.brand{
-  
-  font-family: cursive;
-  font-weight:800;
+.brand {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 800;
   font-size: 1.8rem;
-  letter-spacing:.22rem;
+  letter-spacing: .22rem;
   margin-bottom: 2%;
-    margin-top: 2%;
+  margin-top: 2%;
+
+  
 }
 .navlinks{ display:flex; gap:18px; flex:1; }
 .link{ font-weight:650; font-size:14px; color:#1f2937; opacity:.9; }
 .link:hover{ opacity:1; }
 
-.navright{ display:flex; align-items:center; gap:10px; }
+.navright{ display:flex; align-items:center; gap:10px; 
+}
 .iconbtn{
   width:40px;
   height:40px;
@@ -63,18 +65,27 @@ a{ text-decoration:none; color:inherit; }
   background:#fff;
   cursor:pointer;
 }
-.hamburger{ display:none; border:0; background:transparent; font-size:22px; cursor:pointer; }
+.hamburger{ 
+  display:none;
+   border:0;
+    background:transparent; 
+    font-size:22px; 
+    cursor:pointer;
+    margin-right: 0px;
+ }
 
 /* Buttons */
-.btn{
-  border:1px solid transparent;
-  cursor:pointer;
-  padding:10px 14px;
-  border-radius:10px;
-  font-weight:800;
-  font-size:14px;
-  display:inline-block;
- 
+.btn{ border:1px solid transparent;
+   cursor:pointer; 
+   padding:10px 14px; 
+  border-radius:10px; 
+  font-weight:800; 
+  font-size:14px; 
+  display:inline-block; }
+
+/* Optional hover effect */
+.btn:hover {
+  background: linear-gradient(135deg, #1d4ed8, #0f172a);
 }
 .btn--primary{ background:var(--blue); color:#fff; 
                margin-right: 0rem;
